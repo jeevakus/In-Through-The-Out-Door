@@ -1,7 +1,7 @@
 """
 Created on Fri Feb 19 2021
 
-@author: InThroughTheOutDoor
+@author: TeamName
 """
 
 """Module importation"""
@@ -22,14 +22,14 @@ while True:
         ser_bytes = ser.readline()
         current_decoded_numPeople = float(ser_bytes[0:len(ser_bytes)-2].decode("utf-8"))
         previous_decoded_numPeople.append(current_decoded_numPeople) 
-        if current_decoded_numPeople != previous_decoded_numPeople[-1]:
+        if current_decoded_numPeople != previous_decoded_numPeople[-2]:
             print(current_decoded_numPeople)
     except:
         continue
-    if (current_decoded_numPeople != previous_decoded_numPeople[-1]) and (current_decoded_numPeople == capacity):
+    if (current_decoded_numPeople != previous_decoded_numPeople[-2]) and (current_decoded_numPeople == capacity):
         print("At Capacity")
-    elif  (current_decoded_numPeople != previous_decoded_numPeople[-1]) and (capacity > current_decoded_numPeople >= (capacity - 5)):
+    elif  (current_decoded_numPeople != previous_decoded_numPeople[-2]) and (capacity > current_decoded_numPeople >= (capacity - 5)):
         print("Reaching capacity", (capacity - current_decoded_numPeople), "spots remain")
-    elif (current_decoded_numPeople != previous_decoded_numPeople[-1]) and (current_decoded_numPeople > capacity):
+    elif (current_decoded_numPeople != previous_decoded_numPeople[-2]) and (current_decoded_numPeople > capacity):
         print("Over Capacity")
 
